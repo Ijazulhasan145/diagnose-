@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor's Diagnosis Tool</title>
+
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    /* Card container */
+    .diagnosis-card {
+      max-width: 320px;
+      margin: 80px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Heading */
+    .diagnosis-card h2 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* Group the dropdowns */
+    .dropdown-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* Dropdown style */
+    .diagnosis-card select {
+      width: 100%;
+      padding: 10px;
+      /* Add extra right padding so text doesn't overlap the arrow */
+      padding-right: 2rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      color: #333;
+      cursor: pointer;
+
+      /* Remove default arrow in various browsers */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      /* Use an inline SVG for a downward arrow */
+      background: #fff
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='10'%20height='6'%3E%3Cpath%20fill='%23333'%20d='M0%200%20L5%206%20L10%200%20Z'/%3E%3C/svg%3E")
+        no-repeat right 0.8rem center/10px 6px;
+    }
+
+    /* Button style */
+    .diagnosis-card button {
+      width: 100%;
+      padding: 10px;
+      background: #000;
+      color: #fff;
+      border: none;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .diagnosis-card button:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <form action="/predict" method="post">
+
+  <div class="diagnosis-card">
+    <h2>Doctor's Diagnosis Tool</h2>
+
+    <div class="dropdown-group">
+      <!-- Disease Dropdown 1 -->
+      <select id="diseaseSelect1" name = "dropdown1">
+        <option disabled selected>Select Disease 1</option>
+      </select>
+
+      <!-- Disease Dropdown 2 -->
+      <select id="diseaseSelect2" name = "dropdown2">
+        <option disabled selected>Select Disease 2</option>
+      </select>
+
+      <!-- Disease Dropdown 3 -->
+      <select id="diseaseSelect3" name = "dropdown3">
+        <option disabled selected>Select Disease 3</option>
+      </select>
+    </div>
+
+    <button type="submit" id="diagnoseBtn">Diagnose</button>
+
+  </div>
+
+</form>
+
+  <script>
+   
+    const diseases = [
+      'itching', ' skin_rash', ' nodal_skin_eruptions', ' dischromic _patches', 
+      ' continuous_sneezing', ' shivering', ' chills', ' watering_from_eyes', 
+      ' stomach_pain', ' acidity', ' ulcers_on_tongue', ' vomiting', 
+      ' yellowish_skin', ' nausea', ' burning_micturition', ' loss_of_appetite', 
+      ' abdominal_pain', ' indigestion', ' muscle_wasting', ' patches_in_throat', 
+      ' high_fever', ' extra_marital_contacts', ' fatigue', ' weight_loss', 
+      ' restlessness', ' lethargy', ' sunken_eyes', ' dehydration', ' diarrhoea', 
+      ' cough', ' breathlessness', ' headache', ' chest_pain', ' dizziness', 
+      ' loss_of_balance', ' blurred_and_distorted_vision', ' back_pain', 
+      ' weakness_in_limbs', ' neck_pain', ' weakness_of_one_body_side', 
+      ' altered_sensorium', ' sweating', ' joint_pain', ' dark_urine', 
+      ' swelling_of_stomach', ' constipation', ' pain_during_bowel_movements', 
+      ' pain_in_anal_region', ' bloody_stool', ' cramps', ' bruising', ' obesity', 
+      ' weight_gain', ' cold_hands_and_feets', ' mood_swings', ' anxiety', 
+      ' knee_pain', ' hip_joint_pain', ' muscle_weakness', ' stiff_neck', 
+      ' swelling_joints', ' movement_stiffness', ' spinning_movements', 
+      ' pus_filled_pimples', ' blackheads', ' scurring', ' bladder_discomfort', 
+      ' foul_smell_of urine', ' continuous_feel_of_urine', ' skin_peeling', 
+      ' silver_like_dusting', ' blister', ' red_sore_around_nose'
+
+    ];
+
+    function populateDropdown(selectId, items) {
+      const dropdown = document.getElementById(selectId);
+      items.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item;
+        option.textContent = item;
+        dropdown.appendChild(option);
+      });
+    }
+
+    populateDropdown("diseaseSelect1", diseases);
+    populateDropdown("diseaseSelect2", diseases);
+    populateDropdown("diseaseSelect3", diseases);
+
+    document.getElementById("diagnoseBtn").addEventListener("click", () => {
+      const selected1 = document.getElementById("diseaseSelect1").value;
+      const selected2 = document.getElementById("diseaseSelect2").value;
+      const selected3 = document.getElementById("diseaseSelect3").value;
+
+      alert(`Disease 1: ${selected1}\nDisease 2: ${selected2}\nDisease 3: ${selected3}`);
+    });
+  </script>
+</body>
+</html>

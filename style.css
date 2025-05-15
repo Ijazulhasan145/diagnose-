@@ -1,0 +1,67 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+  }
+  
+  /* Card container */
+  .diagnosis-card {
+    max-width: 320px;
+    margin: 80px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Heading */
+  .diagnosis-card h2 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Dropdown container */
+  .dropdown-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Dropdown style */
+  .diagnosis-card select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    appearance: none; /* Remove default arrow in some browsers */
+    background: #fff url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='4'%20height='5'%3E%3Cpath%20fill='%23333'%20d='M2%200L0%202h4L2%200z'/%3E%3C/svg%3E") no-repeat right 0.8rem center/8px 10px;
+  }
+  
+  /* Button style */
+  .diagnosis-card button {
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .diagnosis-card button:hover {
+    background: #333;
+  }
+  
